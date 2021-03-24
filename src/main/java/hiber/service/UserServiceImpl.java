@@ -21,17 +21,17 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<User> getSomeUsers(int count) {
-        return userDao.getSomeUsers(0);
+    public List<User> getSomeUsers() {
+        return userDao.getSomeUsers();
     }
 
     @Override
-    public void deleteUser(User user) {
-        userDao.deleteUser(user);
+    public void deleteUser(long id) {
+        userDao.deleteUser(id);
     }
 
     @Override
-    public void updateUser(Long id, String name, String surname) {
+    public void updateUser(long id, String name, String surname) {
         userDao.updateUser(id, name, surname);
     }
 }
