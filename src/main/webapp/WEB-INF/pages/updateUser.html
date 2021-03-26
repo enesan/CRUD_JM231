@@ -5,15 +5,18 @@
     <title>Update/delete user</title>
 </head>
 <body>
-<form th:method="patch" th:action="@{{id}(id=${user.getId()})}" th:object="${user}">
-    <label  for="name">Name: </label>
-    <input  type="text" th:field="*name" id="name">
-    <br>
-    <label  for="surname">Name: </label>
-    <input  type="text" th:field="*surname" id="surname">
-    <br>
-    <input type="submit" value="Update">
+<p th:text="${user.getName()}"></p>
+<!--<form th:method="patch" th:action="@{{id}(id=${user.getId()})}" th:object="${user}">-->
+<!--    <label  for="name">Name: </label>-->
+<!--    <input  type="text" th:field="*name" id="name">-->
+<!--    <br>-->
+<!--    <label  for="surname">Name: </label>-->
+<!--    <input  type="text" th:field="*surname" id="surname">-->
+<!--    <br>-->
+<!--    <input type="submit" value="Update">-->
+<!--</form>-->
+<form th:method="delete" action="@{{id}(id=${user.getId()})}">
+    <input type="submit" value="delete">
 </form>
-
 </body>
 </html>

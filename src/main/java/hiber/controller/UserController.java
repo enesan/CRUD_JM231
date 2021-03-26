@@ -44,21 +44,20 @@ public class UserController {
    @GetMapping("/{id}")
    public String takeUserForUpdateOrDelete(@PathVariable("id") long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
-       User u = (User)model.getAttribute("user");
-       System.out.println(u.getName());
         return "updateUser";
    }
 
-   @PatchMapping("/{id}")
-   public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") long id) {
-        userService.updateUser(id, user.getName(), user.getSurname());
-        return "redirect:/list";
-   }
+    @PatchMapping("/{id}")
+    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") long id) {
+         userService.updateUser(id, user.getName(), user.getSurname());
+         return "redirect:/list";
+    }
 
-    @DeleteMapping("/deleteUser/")
-    public String deleteUser(@ModelAttribute("user") User user) {
-        userService.deleteUser(user.getId());
-        return "deleteUser";
+    @DeleteMapping("/{id}")
+    public String deleteUser(@PathVariable("id") long id) {
+        System.out.println("User ud = " + id);
+        userService.deleteUser(id);
+        return "redirect:/list";
     }
 
 }
