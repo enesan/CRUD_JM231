@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<!--слетели русские символы-->
+<body>
+<a href="/">Choice's page</a>
+<form th:method="POST" th:action="@{/addUser}" th:object="${user}">
+    <div>
+        <label for="name">Name: </label>
+        <input type="text" th:field="*{name}" id="name"/>
+        <br>
+        <label for="surname">Surname </label>
+        <input type="text" th:field="*{surname}" id="surname">
+        <br>
+        <input type="submit" value="Add person">
+    </div>
+</form>
+<!--<form style="border: 1px solid black" method="POST" action="/">-->
+<!--     ручной вариант. нужный параметр он видит по имени инпута-->
+<!--    <label for="name">Name</label>-->
+<!--    <input name="name" type="text" id="name"/>-->
+<!--    <br/>-->
+<!--    <label for="name">Surname</label>-->
+<!--    <input name="surname" type="text" id="surname"/>-->
+<!--    <br/>-->
+<!--    <input type="submit" value="Add person">-->
+<!--    <br>-->
+<!--</form>-->
+</body>
+</html>

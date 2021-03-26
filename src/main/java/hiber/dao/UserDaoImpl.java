@@ -60,4 +60,10 @@ public class UserDaoImpl implements UserDao {
                 .executeUpdate();
 
     }
+
+    @Transactional
+    @Override
+    public User getUserById(long id) {
+        return em.find(User.class, id);
+    }
 }

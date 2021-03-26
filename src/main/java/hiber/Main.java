@@ -33,6 +33,7 @@ public class Main {
         //  }
 
         userService.updateUser(2, "Hello", "World");
+      //  userService.getUserById(3);
 
     }
 }
