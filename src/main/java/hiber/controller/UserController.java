@@ -32,25 +32,23 @@ public class UserController {
         return "addUser";
     }
 
-
     @PostMapping("/addUser")
-    public String addUser(@ModelAttribute("user") User user){
-       // userService.addUser(new User(name, surname)); // ручной способ, ужно добавить реквестпарамы в сигнатуру
+    public String addUser(@ModelAttribute("user") User user) {
+        // userService.addUser(new User(name, surname)); // ручной способ, ужно добавить реквестпарамы в сигнатуру
         userService.addUser(user);
         return "addUser";
     }
 
-
-   @GetMapping("/{id}")
-   public String takeUserForUpdateOrDelete(@PathVariable("id") long id, Model model) {
+    @GetMapping("/{id}")
+    public String takeUserForUpdateOrDelete(@PathVariable("id") long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
         return "updateUser";
-   }
+    }
 
     @PatchMapping("/{id}")
     public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") long id) {
-         userService.updateUser(id, user.getName(), user.getSurname());
-         return "redirect:/list";
+        userService.updateUser(id, user.getName(), user.getSurname());
+        return "redirect:/list";
     }
 
     @DeleteMapping("/{id}")
