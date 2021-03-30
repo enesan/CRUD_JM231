@@ -15,27 +15,23 @@ public class UserDaoImpl implements UserDao {
     @PersistenceContext(unitName = "entityManagerFactory")
     private EntityManager em;
 
-    @Transactional
     @Override
     public void addUser(User user) {
         em.persist(user);
     }
 
-    @Transactional
     @Override
     public List<User> getSomeUsers() {
         TypedQuery<User> query = (TypedQuery<User>) em.createQuery("from User");
         return query.getResultList();
     }
 
-    @Transactional
     @Override
     public void deleteUser(long id) {
         User user = em.find(User.class, id);
         em.remove(em.contains(user) ? user : em.merge(user));
     }
 
-    @Transactional
     @Override
     public void updateUser(long id, String name, String surname) {
         int result = em.createQuery("update User set name = :name, surname = :surname " +
@@ -47,7 +43,6 @@ public class UserDaoImpl implements UserDao {
 
     }
 
-    @Transactional
     @Override
     public User getUserById(long id) {
         return em.find(User.class, id);
