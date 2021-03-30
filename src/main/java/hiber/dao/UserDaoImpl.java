@@ -12,31 +12,19 @@ import java.util.List;
 @Repository
 public class UserDaoImpl implements UserDao {
 
-    // разобраться с persistanceunit и persistancecontext
-    @Autowired
-    @Qualifier("entityManagerFactory")
-    private EntityManagerFactory emf;
-
     @PersistenceContext(unitName = "entityManagerFactory")
     private EntityManager em;
 
-
-    // как вытащить юзера из параметра? например, если бы было
-    // insert into User(name, surname) select name, surname from ***user***");
-    // entitygraph
     @Transactional
     @Override
     public void addUser(User user) {
         em.persist(user);
-        //  entityManagerFactory.createEntityManager().persist(user);
     }
 
     @Transactional
     @Override
     public List<User> getSomeUsers() {
-        // а здесь он работает через фабрику менеджеров ¯\_(ツ)_/¯
-        TypedQuery<User> query = (TypedQuery<User>) emf.createEntityManager()
-                .createQuery("from User");
+        TypedQuery<User> query = (TypedQuery<User>) em.createQuery("from User");
         return query.getResultList();
     }
 
